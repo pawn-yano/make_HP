@@ -1,0 +1,45 @@
+.btn {
+  display: inline-block;
+  padding: 25px;
+  text-align: center;
+  color: white;
+}
+.pink-btn {
+  background-color: hotpink;
+}
+.green-btn {
+  background-color: green;
+}
+
+.header_inner {
+  margin: 0 30px;
+}
+.header_upper {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.header_upper_left {
+  display: flex;
+  align-items: center;
+}
+.co-name {
+  margin-left: 20px;
+  font-size: 32px;
+}
+.header_btns ul {
+  display: flex;
+  justify-content: flex-end;
+}
+.header_btns .btn {
+  margin-left: 25px;
+  width: 240px;
+}
+.header_lower {
+  margin: 50px 0 30px 0;
+}
+.header_menus ul {
+  display: flex;
+  justify-content: space-evenly;
+}
+
