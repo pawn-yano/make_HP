@@ -46,6 +46,18 @@ body {
   justify-content: space-evenly;
 }
 
+.main_top {
+  margin: 95px 0;
+  text-align: center;
+}
+.main_top h1 {
+  margin-bottom: 35px;
+  font-size: 37px;
+}
+.main_top p {
+  font-size: 20px;
+}
+
 footer {
   text-align: center;
 }
