@@ -7,7 +7,8 @@
   <title>お問い合わせ｜会社名が入ります</title>
   <meta name="description" content>
   <link rel="stylesheet" href="../reset.css">
-  <link rel="stylesheet" href="style.css"> 
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css">
 </head>
 <body>
   <header>
@@ -36,8 +37,9 @@
       </div>
     </div>
   </header>
+
   <div class="mv">
-    <img src="images/contact_mv.png" width="100%" alt>
+    <img src="../images/contact_mv.png" width="100%" alt>
   </div>
 
   <main>
@@ -49,9 +51,49 @@
           後ほど担当者よりご連絡させていただきます。
         </p>
       </div>
-      <form>
 
-      </form>  
+      <form action="index.html" method="post">
+        <table>
+          <tr>
+            <th>お名前<span class="reqd-icon">必須</span></th>
+            <td><input class="textbox" type="text" name="name" placeholder="山田太郎" required></td>
+          </tr>
+          <tr>
+            <th>フリガナ<span class="reqd-icon">必須</span></th>
+            <td><input class="textbox" type="text" name="furigana" placeholder="ヤマダタロウ" required></td>
+          </tr>
+          <tr>
+            <th>メールアドレス<span class="reqd-icon">必須</span></th>
+            <td><input class="textbox" type="email" name="email" placeholder="info@fast-creademy.jp" required></td>
+          </tr>
+          <tr>
+            <th>電話番号<span class="reqd-icon">必須</span></th>
+            <td><input class="textbox" type="tel" name="phone" placeholder="000-0000-0000" required></td>
+          </tr>
+          <tr>
+            <th>お問い合わせ項目<span class="reqd-icon">必須</span></th>
+            <td>
+              <select name="item" required>
+                <option value="" disabled selected>選択してください</option>
+                <option value="xxxx">XXXXについて</option>
+                <option value="yyyy">YYYYについて</option>
+                <option value="zzzz">ZZZZについて</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th>お問い合わせ内容<span class="reqd-icon">必須</span></th>
+            <td><textarea name="message" rows="7" placeholder="こちらにお問い合わせ内容をご記入ください" required></textarea></td>
+          </tr>
+          <tr>
+            <th>個人情報保護方針<span class="reqd-icon">必須</span></th>
+            <td><input type="checkbox" name="privpol" value="concent" required><a href="privpol.html" target="_blank">個人情報保護方針<span class="fas fa-window-restore"></span></a>に同意します。</td>
+          </tr>
+        </table>
+        <div class="form_bottom">
+          <button type="submit" class="btn green-btn">確認</button>
+        </div>
+      </form>
     </div>
   </main>
 
@@ -77,13 +119,13 @@
     <div class="footer_area3">
       <nav class="footer_links">
         <ul>
-          <li><a href="#" target>リンク01</a></li>
-          <li><a href="#" target>リンク02</a></li>
-          <li><a href="#" target>リンク03</a></li>
-          <li><a href="#" target>リンク04</a></li>
-          <li><a href="#" target>リンク05</a></li>
-          <li><a href="#" target>リンク06</a></li>
-          <li><a href="#" target>リンク07</a></li>
+          <li><a href="#" target="_blank">リンク01</a></li>
+          <li><a href="#" target="_blank">リンク02</a></li>
+          <li><a href="#" target="_blank">リンク03</a></li>
+          <li><a href="#" target="_blank">リンク04</a></li>
+          <li><a href="#" target="_blank">リンク05</a></li>
+          <li><a href="#" target="_blank">リンク06</a></li>
+          <li><a href="#" target="_blank">リンク07</a></li>
         </ul>
       </nav>
     </div>

@@ -1,5 +1,5 @@
 body {
-  font-size: 18px;
+  font-size: 19px;
 }
 .btn {
   display: inline-block;
@@ -36,7 +36,7 @@ body {
 }
 .header_btns .btn {
   margin-left: 25px;
-  width: 240px;
+  width: min(240px, 20vw);
 }
 .header_lower {
   margin: 50px 0 30px 0;
@@ -46,16 +46,85 @@ body {
   justify-content: space-evenly;
 }
 
+.main_wrapper {
+  margin: 0 50px;
+}
 .main_top {
-  margin: 95px 0;
+  margin: 95px 0 90px 0;
   text-align: center;
 }
 .main_top h1 {
   margin-bottom: 35px;
-  font-size: 37px;
+  font-size: 36px;
 }
 .main_top p {
-  font-size: 20px;
+  font-size: 19px;
+}
+
+form table {
+  border-top: thin solid silver;
+  border-bottom: thin solid silver;
+}
+form table {
+  width: 100%;
+}
+form table th {
+  padding: 35px 10px 35px 0;
+  width: 30%;
+}
+form table th .reqd-icon {
+  margin-left: 20px;
+  display: inline-block;
+  border-radius: 10%;
+  padding: 8px;
+  background-color: hotpink;
+  font-size: 15px;
+  color: white;
+}
+form table td {
+  padding: 35px 0;
+  width: 70%;
+}
+form table td .textbox {
+  border: thin solid silver;
+  padding: 15px;
+  width: 100%;
+}
+form table td select {
+  border: thin solid silver;
+  padding: 15px;
+  width: 45%;
+}
+form table td select:invalid {
+  color: lightgray;
+}
+form table td select option {
+  color: black;
+}
+select option:first-child {
+  color: lightgray;
+}
+form table td textarea {
+  border: thin solid silver;
+  padding: 8px 15px;
+  width: 100%;
+}
+form table td input[type="checkbox"] {
+  margin-right: 6px;
+  width: 16px;
+  height: 16px;
+}
+form table td a {
+  margin-right: 7px;
+  border-bottom: thin solid green;
+  color: green;
+}
+.form_bottom {
+  text-align: center;
+}
+.form_bottom .btn {
+  margin: 80px 0 115px 0;
+  width: 350px;
 }
 
 footer {
@@ -77,7 +146,7 @@ footer {
   font-size: 26px;
 }
 .footer_area1 .btn {
-  width: 350px;
+  width: min(350px, 100%);
 }
 .footer_area2 ul {
   margin: 580px 0 100px 0;
