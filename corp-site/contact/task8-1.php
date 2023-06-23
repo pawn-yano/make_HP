@@ -1,10 +1,25 @@
+<?php
+$name       = $_POST['name'];
+$furigana   = $_POST['furigana'];
+$email      = $_POST['email'];
+$phone      = $_POST['phone'];
+$inqItem    = $_POST['inqItem'];
+$inqContent = $_POST['inqContent'];
+$privPol    = $_POST['privPol'];
+
+$sendable = True;
+
+$readonly = $sendable ? 'readonly' : '';
+$disabled = $sendable ? 'disabled' : '';
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>お問い合わせ｜会社名が入ります</title>
+  <title>PHP課題8-1</title>
   <meta name="description" content>
   <link rel="stylesheet" href="../reset.css">
   <link rel="stylesheet" href="style.css">
@@ -52,44 +67,46 @@
         </p>
       </div>
 
-      <form action="task8-1.php" method="post">
+      <form action="<?= $sendable ? 'task9-1.php' : 'task8-1.php'; ?>" method="post">
         <table>
           <tr>
             <th>お名前<span class="reqd-icon">必須</span></th>
-            <td><input class="text-box" type="text" name="name" placeholder="山田太郎"></td>
+            <td><input class="text-box" type="text" name="name" placeholder="山田太郎" value="<?= $name; ?>" <?= $readonly; ?>></td>
           </tr>
           <tr>
             <th>フリガナ<span class="reqd-icon">必須</span></th>
-            <td><input class="text-box" type="text" name="furigana" placeholder="ヤマダタロウ"></td>
+            <td><input class="text-box" type="text" name="furigana" placeholder="ヤマダタロウ" value="<?= $furigana; ?>" <?= $readonly; ?>></td>
           </tr>
           <tr>
             <th>メールアドレス<span class="reqd-icon">必須</span></th>
-            <td><input class="text-box" type="email" name="email" placeholder="info@fast-creademy.jp"></td>
+            <td><input class="text-box" type="email" name="email" placeholder="info@fast-creademy.jp" value="<?= $email; ?>" <?= $readonly; ?>></td>
           </tr>
           <tr>
             <th>電話番号<span class="reqd-icon">必須</span></th>
-            <td><input class="text-box" type="tel" name="phone" placeholder="000-0000-0000"></td>
+            <td><input class="text-box" type="tel" name="phone" placeholder="000-0000-0000" value="<?= $phone; ?>" <?= $readonly; ?>></td>
           </tr>
           <tr>
             <th>お問い合わせ項目<span class="reqd-icon">必須</span></th>
             <td>
-              <select name="inqItem" onchange="this.style.color='black';">
+              <select name="inqItem" onchange="this.style.color='black';" <?= ($inqItem != '') ? 'style="color: black;"' : ''; ?> <?= $disabled; ?>>
                 <option value="" hidden>選択してください</option>
-                <option value="XXXX">XXXXについて</option>
-                <option value="YYYY">YYYYについて</option>
-                <option value="ZZZZ">ZZZZについて</option>
+                <option value="XXXX" <?= ($inqItem == 'XXXX') ? 'selected' : ''; ?>>XXXXについて</option>
+                <option value="YYYY" <?= ($inqItem == 'YYYY') ? 'selected' : ''; ?>>YYYYについて</option>
+                <option value="ZZZZ" <?= ($inqItem == 'ZZZZ') ? 'selected' : ''; ?>>ZZZZについて</option>
               </select>
+              <?= $sendable ? '<input type="hidden" name="inqItem" value="'.$inqItem.'">' : ''; ?>
             </td>
           </tr>
           <tr>
             <th>お問い合わせ内容<span class="reqd-icon">必須</span></th>
-            <td><textarea name="inqContent" rows="7" placeholder="こちらにお問い合わせ内容をご記入ください"></textarea></td>
+            <td><textarea name="inqContent" rows="7" placeholder="こちらにお問い合わせ内容をご記入ください" <?= $readonly; ?>><?= $inqContent; ?></textarea></td>
           </tr>
           <tr>
             <th>個人情報保護方針<span class="reqd-icon">必須</span></th>
             <td>
               <input type="hidden" name="privPol" value="">
-              <input type="checkbox" name="privPol" value="checked">
+              <input type="checkbox" name="privPol" value="checked" <?= $privPol; ?> <?= $disabled; ?>>
+              <?= $sendable ? '<input type="hidden" name="inqItem" value="'.$privPol.'">' : ''; ?>
               <a href="privpol.html" target="_blank">個人情報保護方針<span class="fas fa-window-restore"></span></a>に同意します。
             </td>
           </tr>

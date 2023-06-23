@@ -83,34 +83,47 @@ form table td {
   padding: 35px 0;
   width: 70%;
 }
-form table td .textbox {
+form table td .text-box {
   border: thin solid silver;
   padding: 15px;
   width: 100%;
+}
+form table td .text-box[readonly] {
+  background-color: silver;
 }
 form table td select {
   border: thin solid silver;
   padding: 15px;
   width: 45%;
-}
-form table td select:invalid {
   color: lightgray;
+}
+form table td select[disabled] {
+  background-color: silver;
+  opacity: 1;
 }
 form table td select option {
   color: black;
-}
-select option:first-child {
-  color: lightgray;
 }
 form table td textarea {
   border: thin solid silver;
   padding: 8px 15px;
   width: 100%;
 }
+form table td textarea[readonly] {
+  background-color: silver;
+}
 form table td input[type="checkbox"] {
   margin-right: 6px;
   width: 16px;
   height: 16px;
+}
+form table td input[type="checkbox"][disabled] {
+  appearance: none;
+}
+form table td input[type="checkbox"][disabled]::after {
+  content: "\f14a";
+  font-family: FontAwesome;
+  color: dimgray;
 }
 form table td a {
   margin-right: 7px;
