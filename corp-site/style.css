@@ -170,6 +170,9 @@ footer {
   line-height: 1.7;
   font-size: 21px;
 }
+.footer_area2 ul li:first-child {
+  font-weight: bold;
+}
 .footer_area3, .footer_area4 {
   border-top: thin solid silver;
 }

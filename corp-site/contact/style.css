@@ -57,14 +57,25 @@ body {
   margin-bottom: 35px;
   font-size: 36px;
 }
-.main_top p {
-  font-size: 19px;
+.main_top h3 {
+  margin: 65px 0 120px 0;
+  font-size: 30px;
+  color: blue;
 }
 
 form table {
   border-top: thin solid silver;
   border-bottom: thin solid silver;
   width: 100%;
+}
+form table caption {
+  margin: 5px 50px;
+  line-height: 1.4;
+  color: red;
+}
+form table caption span {
+  display: inline-block;
+  font-weight: bold;
 }
 form table th {
   padding: 35px 10px 35px 0;
@@ -89,16 +100,17 @@ form table td .text-box {
   width: 100%;
 }
 form table td .text-box[readonly] {
-  background-color: silver;
+  border-color: lightgrey;
+  background-color: lightgray;
 }
 form table td select {
   border: thin solid silver;
   padding: 15px;
   width: 45%;
-  color: lightgray;
 }
 form table td select[disabled] {
-  background-color: silver;
+  border-color: lightgray;
+  background-color: lightgray;
   opacity: 1;
 }
 form table td select option {
@@ -110,7 +122,8 @@ form table td textarea {
   width: 100%;
 }
 form table td textarea[readonly] {
-  background-color: silver;
+  border-color: lightgray;
+  background-color: lightgray;
 }
 form table td input[type="checkbox"] {
   margin-right: 6px;
@@ -120,9 +133,10 @@ form table td input[type="checkbox"] {
 form table td input[type="checkbox"][disabled] {
   appearance: none;
 }
-form table td input[type="checkbox"][disabled]::after {
-  content: "\f14a";
-  font-family: FontAwesome;
+form table td input[type="checkbox"][disabled]::before {
+  content: '\f14a';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: bold;
   color: dimgray;
 }
 form table td a {
@@ -131,10 +145,12 @@ form table td a {
   color: green;
 }
 .form_bottom {
-  text-align: center;
+  margin: 80px 25px 115px 25px;
+  display: flex;
+  justify-content: center;
+  column-gap: 50px;
 }
 .form_bottom .btn {
-  margin: 80px 0 115px 0;
   width: 350px;
 }
 
@@ -163,6 +179,9 @@ footer {
   margin: 580px 0 100px 0;
   line-height: 1.7;
   font-size: 21px;
+}
+.footer_area2 ul li:first-child {
+  font-weight: bold;
 }
 .footer_area3, .footer_area4 {
   border-top: thin solid silver;
@@ -227,7 +246,15 @@ footer {
     line-height: 1.8;
     font-size: 16px;
   }
+  .main_top h3 {
+    margin: 30px 0 60px 0;
+    font-size: 20px;
+  }
   
+  form table caption {
+    margin: 5px 30px;
+    font-size: 17px;
+  }
   form table th {
     display: block;
     padding: 20px 0 8px 5px;
@@ -240,8 +267,11 @@ footer {
     width: 100%;
     font-size: 18px;
   }
+  .form_bottom {
+    margin: 50px 15px 100px 15px;
+    column-gap: 30px;
+  }
   .form_bottom .btn {
-    margin: 50px 0 100px 0;
     padding: 17px;
     width: 220px;
     font-size: 18px;

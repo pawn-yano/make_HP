@@ -1,14 +1,29 @@
 <?php
-$name       = $_POST['name'];
-$furigana   = $_POST['furigana'];
-$email      = $_POST['email'];
-$phone      = $_POST['phone'];
-$inqItem    = $_POST['inqItem'];
-$inqContent = $_POST['inqContent'];
-$privPol    = $_POST['privPol'];
+foreach ($_POST as $key => $value) {
+  $$key = $value;
+}
 
-$sendable = True;
+$invdProps = [];
+if ($name === '') {$invdProps[] = 'お名前';} 
+if ($furigana === '') {$invdProps[] = 'フリガナ';}
+if (! preg_match('/^.+@.+$/', $email)) {$invdProps[] = 'メールアドレス';}
+if (! preg_match('/^\d{10,11}$/', str_replace('-', '', $phone))) {$invdProps[] = '電話番号';}
+if ($inqItem === '') {$invdProps[] = 'お問い合わせ項目';}
+if ($inqCont === '') {$invdProps[] = 'お問い合わせ内容';}
+if ($privPol === '') {$invdProps[] = '個人情報保護方針';}
 
+if ($direction === 'backward') {
+  $sendable = false;
+  $message = '';
+} elseif (empty($invdProps)) {
+  $sendable = true;
+  $message = '　下記の入力内容でよろしければ、「送信」ボタンを押してください。';  
+} else {
+  $sendable = false;
+  $message = '※ 次の必須項目が入力されていないか、無効な形式で入力されています。<br>
+              <span>「' . join('」</span><span>「', $invdProps) . '」</span><br>
+              これらの項目すべてを正しく入力し、再度「確認」ボタンを押してください。';
+}
 $readonly = $sendable ? 'readonly' : '';
 $disabled = $sendable ? 'disabled' : '';
 ?>
@@ -24,6 +39,35 @@ $disabled = $sendable ? 'disabled' : '';
   <link rel="stylesheet" href="../reset.css">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css">
+  <style>
+    <?php
+    if ($sendable) {
+      echo 'form table caption {
+              font-weight: bold;
+              color: green;
+            }';
+      echo 'form table caption::before {
+              content: "　ご確認　";
+              outline: 2px solid;
+              outline-offset: -4px;
+              letter-spacing: 3px;
+              font-size: 95%;
+            }';
+    }
+    ?>
+    form table td select {
+      color: <?= ($inqItem === '') ? 'lightgray' : 'black'; ?>;
+    }
+  </style>
+  <style media="screen and (max-width: 767px)">
+    <?php
+    if ($sendable) {
+      echo 'form table caption {
+              font-size: 18px;
+            }';
+    }
+    ?>
+  </style>
 </head>
 <body>
   <header>
@@ -62,13 +106,14 @@ $disabled = $sendable ? 'disabled' : '';
       <div class="main_top">
         <h1>お問い合わせ</h1>
         <p>
-          お問い合わせや業務内容に関するご質問は、電話またはこちらのお問い合わせフォームより承っております。<br>
+          お問い合わせや業務内容に関するご質問は、電話またはこちらのお問い合わせフォームより承っております。<br> 
           後ほど担当者よりご連絡させていただきます。
         </p>
       </div>
 
-      <form action="<?= $sendable ? 'task9-1.php' : 'task8-1.php'; ?>" method="post">
+      <form action="<?= $sendable ? 'task9-1.php' : 'task8-1.php'; ?>" method="post" novalidate>
         <table>
+          <caption><?= $message; ?></caption>
           <tr>
             <th>お名前<span class="reqd-icon">必須</span></th>
             <td><input class="text-box" type="text" name="name" placeholder="山田太郎" value="<?= $name; ?>" <?= $readonly; ?>></td>
@@ -88,31 +133,34 @@ $disabled = $sendable ? 'disabled' : '';
           <tr>
             <th>お問い合わせ項目<span class="reqd-icon">必須</span></th>
             <td>
-              <select name="inqItem" onchange="this.style.color='black';" <?= ($inqItem != '') ? 'style="color: black;"' : ''; ?> <?= $disabled; ?>>
+              <select name="inqItem" onchange="this.style.color='black';" <?= $disabled; ?>>
                 <option value="" hidden>選択してください</option>
-                <option value="XXXX" <?= ($inqItem == 'XXXX') ? 'selected' : ''; ?>>XXXXについて</option>
-                <option value="YYYY" <?= ($inqItem == 'YYYY') ? 'selected' : ''; ?>>YYYYについて</option>
-                <option value="ZZZZ" <?= ($inqItem == 'ZZZZ') ? 'selected' : ''; ?>>ZZZZについて</option>
+                <option value="選択肢01" <?= ($inqItem === '選択肢01') ? 'selected' : ''; ?>>選択肢01</option>
+                <option value="選択肢02" <?= ($inqItem === '選択肢02') ? 'selected' : ''; ?>>選択肢02</option>
+                <option value="選択肢03" <?= ($inqItem === '選択肢03') ? 'selected' : ''; ?>>選択肢03</option>
+                <option value="選択肢04" <?= ($inqItem === '選択肢04') ? 'selected' : ''; ?>>選択肢04</option>
+                <option value="選択肢05" <?= ($inqItem === '選択肢05') ? 'selected' : ''; ?>>選択肢05</option>
               </select>
-              <?= $sendable ? '<input type="hidden" name="inqItem" value="'.$inqItem.'">' : ''; ?>
+              <?= $sendable ? ('<input type="hidden" name="inqItem" value="' . $inqItem . '">') : ''; ?>
             </td>
           </tr>
           <tr>
             <th>お問い合わせ内容<span class="reqd-icon">必須</span></th>
-            <td><textarea name="inqContent" rows="7" placeholder="こちらにお問い合わせ内容をご記入ください" <?= $readonly; ?>><?= $inqContent; ?></textarea></td>
+            <td><textarea name="inqCont" rows="7" placeholder="こちらにお問い合わせ内容をご記入ください" <?= $readonly; ?>><?= $inqCont; ?></textarea></td>
           </tr>
           <tr>
             <th>個人情報保護方針<span class="reqd-icon">必須</span></th>
             <td>
               <input type="hidden" name="privPol" value="">
               <input type="checkbox" name="privPol" value="checked" <?= $privPol; ?> <?= $disabled; ?>>
-              <?= $sendable ? '<input type="hidden" name="inqItem" value="'.$privPol.'">' : ''; ?>
+              <?= $sendable ? ('<input type="hidden" name="privPol" value="' . $privPol . '">') : ''; ?>
               <a href="privpol.html" target="_blank">個人情報保護方針<span class="fas fa-window-restore"></span></a>に同意します。
             </td>
           </tr>
         </table>
         <div class="form_bottom">
-          <button type="submit" class="btn green-btn">確認</button>
+          <?= $sendable ? '<button type="submit" name="direction" value="backward" formaction="task8-1.php" class="btn pink-btn">変更</button>' : ''; ?>
+          <button type="submit" name="direction" value="forward" class="btn green-btn"><?= $sendable ? '送信' : '確認' ?></button>
         </div>
       </form>
     </div>
@@ -131,7 +179,7 @@ $disabled = $sendable ? 'disabled' : '';
     </div>
     <div class="footer_area2">
       <ul>
-        <li><strong>ここには会社名が入ります</strong></li>
+        <li>ここには会社名が入ります</li>
         <li>住所が入ります</li>
         <li>03-1234-5678</li>
         <li>営業時間：9:00～18:00</li>

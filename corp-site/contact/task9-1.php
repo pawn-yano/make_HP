@@ -4,16 +4,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>お問い合わせ｜会社名が入ります</title>
+  <title>PHP課題9-1｜会社名が入ります</title>
   <meta name="description" content>
   <link rel="stylesheet" href="../reset.css">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css">
-  <style>
-    form table td select {
-      color: lightgray;
-    }
-  </style>
 </head>
 <body>
   <header>
@@ -51,61 +46,10 @@
     <div class="main_wrapper">
       <div class="main_top">
         <h1>お問い合わせ</h1>
-        <p>
-          お問い合わせや業務内容に関するご質問は、電話またはこちらのお問い合わせフォームより承っております。<br>
-          後ほど担当者よりご連絡させていただきます。
-        </p>
+        <h3>送信完了しました。</h3>
       </div>
-
-      <form action="task8-1.php" method="post" novalidate>
-        <table>
-          <tr>
-            <th>お名前<span class="reqd-icon">必須</span></th>
-            <td><input class="text-box" type="text" name="name" placeholder="山田太郎"></td>
-          </tr>
-          <tr>
-            <th>フリガナ<span class="reqd-icon">必須</span></th>
-            <td><input class="text-box" type="text" name="furigana" placeholder="ヤマダタロウ"></td>
-          </tr>
-          <tr>
-            <th>メールアドレス<span class="reqd-icon">必須</span></th>
-            <td><input class="text-box" type="email" name="email" placeholder="info@fast-creademy.jp"></td>
-          </tr>
-          <tr>
-            <th>電話番号<span class="reqd-icon">必須</span></th>
-            <td><input class="text-box" type="tel" name="phone" placeholder="000-0000-0000"></td>
-          </tr>
-          <tr>
-            <th>お問い合わせ項目<span class="reqd-icon">必須</span></th>
-            <td>
-              <select name="inqItem" onchange="this.style.color='black';">
-                <option value="" hidden>選択してください</option>
-                <option value="選択肢01">選択肢01</option>
-                <option value="選択肢02">選択肢02</option>
-                <option value="選択肢03">選択肢03</option>
-                <option value="選択肢04">選択肢04</option>
-                <option value="選択肢05">選択肢05</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <th>お問い合わせ内容<span class="reqd-icon">必須</span></th>
-            <td><textarea name="inqCont" rows="7" placeholder="こちらにお問い合わせ内容をご記入ください"></textarea></td>
-          </tr>
-          <tr>
-            <th>個人情報保護方針<span class="reqd-icon">必須</span></th>
-            <td>
-              <input type="hidden" name="privPol" value="">
-              <input type="checkbox" name="privPol" value="checked">
-              <a href="privpol.html" target="_blank">個人情報保護方針<span class="fas fa-window-restore"></span></a>に同意します。
-            </td>
-          </tr>
-        </table>
-        <div class="form_bottom">
-          <button type="submit" name="direction" value="forward" class="btn green-btn">確認</button>
-        </div>
-      </form>
     </div>
+    
   </main>
 
   <footer>
