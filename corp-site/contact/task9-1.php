@@ -1,3 +1,43 @@
+<?php
+date_default_timezone_set('Asia/Tokyo');
+$regDate = date('Y-m-d H:i:s');
+
+foreach ($_POST as $key => $value) {
+  $$key = $value;
+}
+
+try {
+  $pdo = new PDO('mysql:host=localhost', 'root', 'root');
+  $pdo->query("CREATE DATABASE IF NOT EXISTS consumer DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
+  $pdo->query("USE consumer; SET NAMES 'utf8mb4'");
+
+  $pdo->query("CREATE TABLE IF NOT EXISTS inquiry (
+    id        INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    fullName  VARCHAR(255),
+    furigana  VARCHAR(255),
+    email     VARCHAR(255),
+    phone     VARCHAR(255),
+    inqItem   VARCHAR(127),
+    inqCont   TEXT,
+    regDate   DATETIME
+  )");
+
+  $stmt = $pdo->prepare("INSERT INTO inquiry VALUES (0, ?, ?, ?, ?, ?, ?, ?)");
+  $stmt->bindParam(1, $fullName, PDO::PARAM_STR);
+  $stmt->bindParam(2, $furigana, PDO::PARAM_STR);
+  $stmt->bindParam(3, $email, PDO::PARAM_STR);
+  $stmt->bindParam(4, $phone, PDO::PARAM_STR);
+  $stmt->bindParam(5, $inqItem, PDO::PARAM_STR);
+  $stmt->bindParam(6, $inqCont, PDO::PARAM_STR);
+  $stmt->bindParam(7, $regDate, PDO::PARAM_STR);
+  $stmt->execute();
+
+} catch (PDOException $e) {
+  echo $e->getMessage() . '<br>';
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>

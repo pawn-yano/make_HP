@@ -4,7 +4,7 @@ foreach ($_POST as $key => $value) {
 }
 
 $invdProps = [];
-if ($name === '') {$invdProps[] = 'お名前';} 
+if ($fllName === '') {$invdProps[] = 'お名前';} 
 if ($furigana === '') {$invdProps[] = 'フリガナ';}
 if (! preg_match('/^.+@.+$/', $email)) {$invdProps[] = 'メールアドレス';}
 if (! preg_match('/^\d{10,11}$/', str_replace('-', '', $phone))) {$invdProps[] = '電話番号';}
@@ -116,7 +116,7 @@ $disabled = $sendable ? 'disabled' : '';
           <caption><?= $message; ?></caption>
           <tr>
             <th>お名前<span class="reqd-icon">必須</span></th>
-            <td><input class="text-box" type="text" name="name" placeholder="山田太郎" value="<?= $name; ?>" <?= $readonly; ?>></td>
+            <td><input class="text-box" type="text" name="fullName" placeholder="山田太郎" value="<?= $fullName; ?>" <?= $readonly; ?>></td>
           </tr>
           <tr>
             <th>フリガナ<span class="reqd-icon">必須</span></th>
