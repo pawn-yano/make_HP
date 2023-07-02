@@ -9,11 +9,6 @@
   <link rel="stylesheet" href="../reset.css">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css">
-  <style>
-    form table td select {
-      color: lightgray;
-    }
-  </style>
 </head>
 <body>
   <header>
@@ -57,7 +52,7 @@
         </p>
       </div>
 
-      <form action="task8-1.php" method="post" novalidate>
+      <form action="task8-1.php#form" method="post" novalidate>
         <table>
           <tr>
             <th>お名前<span class="reqd-icon">必須</span></th>
@@ -78,7 +73,7 @@
           <tr>
             <th>お問い合わせ項目<span class="reqd-icon">必須</span></th>
             <td>
-              <select name="inqItem" onchange="this.style.color='black';">
+              <select name="inqItem" required>
                 <option value="" hidden>選択してください</option>
                 <option value="選択肢01">選択肢01</option>
                 <option value="選択肢02">選択肢02</option>

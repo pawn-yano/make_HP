@@ -84,7 +84,7 @@ try {
 
   <main>
     <div class="main_wrapper">
-      <div class="main_top">
+      <div id="main_top" class="main_top">
         <h1>お問い合わせ</h1>
         <h3>送信完了しました。</h3>
       </div>

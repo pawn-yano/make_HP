@@ -55,9 +55,6 @@ $disabled = $sendable ? 'disabled' : '';
             }';
     }
     ?>
-    form table td select {
-      color: <?= ($inqItem === '') ? 'lightgray' : 'black'; ?>;
-    }
   </style>
   <style media="screen and (max-width: 767px)">
     <?php
@@ -111,7 +108,7 @@ $disabled = $sendable ? 'disabled' : '';
         </p>
       </div>
 
-      <form action="<?= $sendable ? 'task9-1.php' : 'task8-1.php'; ?>" method="post" novalidate>
+      <form id="form" action="<?= $sendable ? 'task9-1.php#main_top' : 'task8-1.php#form'; ?>" method="post" novalidate>
         <table>
           <caption><?= $message; ?></caption>
           <tr>
@@ -133,7 +130,7 @@ $disabled = $sendable ? 'disabled' : '';
           <tr>
             <th>お問い合わせ項目<span class="reqd-icon">必須</span></th>
             <td>
-              <select name="inqItem" onchange="this.style.color='black';" <?= $disabled; ?>>
+              <select name="inqItem" required <?= $disabled; ?>>
                 <option value="" hidden>選択してください</option>
                 <option value="選択肢01" <?= ($inqItem === '選択肢01') ? 'selected' : ''; ?>>選択肢01</option>
                 <option value="選択肢02" <?= ($inqItem === '選択肢02') ? 'selected' : ''; ?>>選択肢02</option>
@@ -159,7 +156,7 @@ $disabled = $sendable ? 'disabled' : '';
           </tr>
         </table>
         <div class="form_bottom">
-          <?= $sendable ? '<button type="submit" name="direction" value="backward" formaction="task8-1.php" class="btn pink-btn">変更</button>' : ''; ?>
+          <?= $sendable ? '<button type="submit" name="direction" value="backward" formaction="task8-1.php#form" class="btn pink-btn">変更</button>' : ''; ?>
           <button type="submit" name="direction" value="forward" class="btn green-btn"><?= $sendable ? '送信' : '確認' ?></button>
         </div>
       </form>

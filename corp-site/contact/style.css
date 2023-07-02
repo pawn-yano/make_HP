@@ -49,6 +49,9 @@ body {
 .main_wrapper {
   margin: 0 50px;
 }
+#main_top {
+  scroll-margin-top: 35vh;
+}
 .main_top {
   margin: 95px 0 90px 0;
   text-align: center;
@@ -72,6 +75,9 @@ form table caption {
   margin: 5px 50px;
   line-height: 1.4;
   color: red;
+}
+form table caption:not(:empty) {
+  padding-top: 25px;
 }
 form table caption span {
   display: inline-block;
@@ -107,6 +113,9 @@ form table td select {
   border: thin solid silver;
   padding: 15px;
   width: 45%;
+}
+form table td select:invalid {
+  color: lightgray;
 }
 form table td select[disabled] {
   border-color: lightgray;
@@ -266,6 +275,9 @@ footer {
     padding: 8px 0 20px 0;
     width: 100%;
     font-size: 18px;
+  }
+  form table td select {
+    width: 60%;
   }
   .form_bottom {
     margin: 50px 15px 100px 15px;
