@@ -1,0 +1,32 @@
+body {
+  margin-left: 20px;
+}
+
+table {
+  margin-bottom: 30px;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid black;
+  width: 100px;
+  text-align: center;
+}
+
+a {
+  display: block;
+}
+
+button {
+  display: block;
+  margin-top: 30px;
+  margin-bottom: -10px;
+}
+
+.red {
+  color: red;
+}
+
+.bold {
+  font-weight: bold;
+}
