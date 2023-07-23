@@ -1,0 +1,64 @@
+.container {
+    margin: 40px auto;
+    width: 500px;
+}
+
+.re {
+    font-size: 14px;
+}
+
+h1 {
+    margin: 20px 0;
+    border-bottom: 1px solid black;
+    padding-bottom: 20px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+
+h1 > a {
+    margin-left: auto;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 3px 10px;
+    background-color: aqua;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+h1 > .search {
+    margin-left: 10px;
+    background-color: orange;
+}
+
+h1 > form > button {
+    margin-left: 10px;
+    vertical-align: 2px;
+    color: red;
+}
+
+h2 {
+    margin-top: 20px;
+    font-size: 19px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+input, textarea {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.error {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: red;
+}
+
+.btn {
+    text-align: right;
+}
