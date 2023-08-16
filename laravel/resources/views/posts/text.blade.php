@@ -2,13 +2,32 @@
     <a href="{{ route('index.posts') }}" class="re">戻る</a>
     <h1>
         <span>{{ $post->title }}</span>
-        <a href="{{ route('edit.posts', $post->id) }}">編集</a>
-        <form action="{{ route('destroy.posts', $post->id) }}" method="post">
-            @method('DELETE')
+        <span class="fa fa-thumbs-up likes"> {{ $post->likes }}</span>
+        <form action="{{ route('like.posts', $post->id) }}" method="post">
+            @method('PATCH')
             @csrf
 
-            <button>削除</button>
+            <button class="like">＋１いいね！</button>
         </form>
+        <a href="{{ route('edit.posts', $post->id) }}" class="edit">編集</a>
+        <button class="destroy" onclick="toggleDialog()">削除</button>
+        <div id="dialog">
+            <button class="close" onclick="toggleDialog()">✕</button>
+            <p>この投稿を本当に削除しますか？</p>
+            <div class="choices">
+                <button onclick="toggleDialog()">キャンセル</button>
+                <form action="{{ route('destroy.posts', $post->id) }}" method="post">
+                    @method('DELETE')
+                    @csrf
+
+                    <button class="destroy">削除する</button>
+                </form>
+            </div>
+        </div>
     </h1>
-    <p>{{ $post->detail }}</p>
+    <div class="lower">
+        <span>作成：{{ $post->created_at }}</span>
+        <span>更新：{{ $post->updated_at }}</span>
+    </div>
+    <p class="detail">{{ $post->detail }}</p>
 </x-layout>

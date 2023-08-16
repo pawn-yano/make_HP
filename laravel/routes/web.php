@@ -41,3 +41,7 @@ Route::delete('/posts/{id}/destroy', [PostController::class, 'destroy'])
 
 Route::get('/posts/search', [PostController::class, 'search'])
     ->name('search.posts');
+
+Route::patch('/posts/{id}/like', [PostController::class, 'like'])
+    ->name('like.posts')
+    ->where('id', '[0-9]+');

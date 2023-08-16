@@ -73,4 +73,13 @@ class PostController extends Controller
 
         return view('posts/search')->with(['keyword' => $keyword, 'posts' => $posts]);
     }
+
+    public function like($id)
+    {
+        $post = Post::findOrfail($id);
+        $post->timestamps = false;
+        $post->increment('likes');
+
+        return redirect()->route('text.posts', $post->id);
+    }
 }

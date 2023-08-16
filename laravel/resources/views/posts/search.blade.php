@@ -12,11 +12,5 @@
     </form>
 
     <h2>検索結果</h2>
-    <ul>
-        @foreach ($posts as $post)
-            <li>
-                <a href="{{ route('text.posts', $post->id) }}">{{ $post->title }}</a>
-            </li>
-        @endforeach
-    </ul>
+    @include('components.post_list', ['posts' => $posts])
 </x-layout>
