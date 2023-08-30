@@ -1,6 +1,6 @@
 <x-layout>
     <h1>
-        <span>Hello Laravel!</span>
+        <span>{{ config('const.BOARD_NAME') }}</span>
         <a href="{{ route('create.posts') }}" class="create">新規追加</a>
         <a href="{{ route('search.posts') }}" class="search">検索</a>
     </h1>

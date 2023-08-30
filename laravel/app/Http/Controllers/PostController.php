@@ -10,7 +10,10 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::latest()->get();
+        $orders = config('const.ORDERS_EN');
+        for ($i = 0; $i < count($orders); $i++) {
+            $posts[$i] = Post::latest($orders[$i])->get();
+        }
 
         return view('index')->with(['posts' => $posts]);
     }
@@ -65,10 +68,11 @@ class PostController extends Controller
     public function search(Request $request)
     {
         $keyword = $request->keyword;
-        if (isset($keyword)) {
-            $posts = Post::where('title', 'LIKE', '%'.$keyword.'%')->latest()->get();
-        } else {
-            $posts = [];
+        $orders = config('const.ORDERS_EN');
+        for ($i = 0; $i < count($orders); $i++) {
+            $posts[$i] = isset($keyword)
+                       ? Post::where('title', 'LIKE', '%'.$keyword.'%')->latest($orders[$i])->get()
+                       : [];
         }
 
         return view('posts/search')->with(['keyword' => $keyword, 'posts' => $posts]);

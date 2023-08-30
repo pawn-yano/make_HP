@@ -11,6 +11,6 @@
         <div class="btn"><button>検索</button></div>
     </form>
 
-    <h2>検索結果</h2>
+    <h2 class="float">検索結果</h2>
     @include('components.post_list', ['posts' => $posts])
 </x-layout>

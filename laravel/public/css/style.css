@@ -3,6 +3,10 @@
     width: 500px;
 }
 
+button {
+    cursor: pointer;
+}
+
 .re {
     font-size: 14px;
 }
@@ -94,7 +98,7 @@ h1 > .destroy {
     display: flex;
     justify-content: center;
     align-items: center;
-    column-gap: 40px;
+    column-gap: 30px;
 }
 
 #dialog > .choices > form > .destroy {
@@ -123,8 +127,31 @@ h2 {
     height: 150px;
 }
 
+.float {
+    float: left;
+}
+
+.sort {
+    margin: -10px 0 -3px 345px;
+    font-size: 15px;
+}
+
+.float + .sort {
+    margin-top: 25px;
+}
+
+.sort select {
+    font-size: 15px;
+}
+
 ul {
+    clear: both;
+    display: none;
     padding-left: 0;
+}
+
+#order_0 {
+    display: block;
 }
 
 li {
