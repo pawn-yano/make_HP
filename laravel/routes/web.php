@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +45,12 @@ Route::get('/posts/search', [PostController::class, 'search'])
 
 Route::patch('/posts/{id}/like', [PostController::class, 'like'])
     ->name('like.posts')
+    ->where('id', '[0-9]+');
+
+Route::post('/posts/{id}/comments', [CommentController::class, 'store'])
+    ->name('store.comments')
+    ->where('id', '[0-9]+');
+
+Route::delete('/comments/{comment}/destroy', [CommentController::class, 'destroy'])
+    ->name('destroy.comments')
     ->where('id', '[0-9]+');

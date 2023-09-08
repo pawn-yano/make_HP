@@ -30,4 +30,30 @@
         <span>更新：{{ $post->updated_at }}</span>
     </div>
     <p class="detail">{{ $post->detail }}</p>
+
+    <h2>{{ $post->cmts }}件のコメント</h2>
+    <ul>
+        <li class="comment">
+            <form action="{{ route('store.comments', $post->id) }}" method="post" class="left">
+                @csrf
+
+                <input type="text" name="body">
+                <button>コメント</button>
+            </form>
+        </li>
+        @foreach ($post->comments()->latest()->get() as $comment)
+            <li class="comment">
+                <span class="left">{{ $comment->body }}</span>
+                <div class="right">
+                    <span>{{ $comment->created_at }}</span>
+                    <form action="{{ route('destroy.comments', $comment->id) }}" method="post">
+                        @method('DELETE')
+                        @csrf
+
+                        <button class="destroy">✕</button>
+                    </form>
+                </div>
+            </li>
+        @endforeach
+    </ul>
 </x-layout>

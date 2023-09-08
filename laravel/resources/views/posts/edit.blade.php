@@ -1,6 +1,6 @@
 <x-layout>
     <a href="{{ route('text.posts', $post->id) }}" class="re">戻る</a>
-    <h1>編集</h1>
+    <h1>編集画面</h1>
     <form action="{{ route('update.posts', $post->id) }}" method="post">
         @method('PATCH')
         @csrf

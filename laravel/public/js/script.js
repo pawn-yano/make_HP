@@ -7,14 +7,10 @@ function toggleDialog() {
     }
 }
 
-function switchOrder(k) {
-    const N = document.getElementById('sort').getAttribute("data-count-orders");
-    for (let i = 0; i < N; i++) {
-        let order = document.getElementById("order_" + i);
-        if (i == k) {
-            order.style.display = "block";
-        } else {
-            order.style.display = "none";
-        }
+function switchOrder(order) {
+    let sorted = document.getElementsByClassName("sorted");
+    for (let each of sorted) {
+        each.style.display = "none";
     }
+    document.getElementById(order).style.display = "block";
 }

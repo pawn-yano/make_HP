@@ -10,9 +10,9 @@ class PostController extends Controller
 {
     public function index()
     {
-        $orders = config('const.ORDERS_EN');
-        for ($i = 0; $i < count($orders); $i++) {
-            $posts[$i] = Post::latest($orders[$i])->get();
+        $orders = config('const.ORDERS');
+        foreach (array_keys($orders) as $order_en) {
+            $posts[$order_en] = Post::latest($order_en)->get();
         }
 
         return view('index')->with(['posts' => $posts]);
@@ -20,7 +20,9 @@ class PostController extends Controller
 
     public function text($id)
     {
-        $post = Post::findOrfail($id);
+        $post = Post::findOrFail($id);
+        $post->cmts = count($post->comments);
+        $post->save();
 
         return view('posts/text')->with(['post' => $post]);
     }
@@ -42,14 +44,14 @@ class PostController extends Controller
 
     public function edit($id)
     {
-        $post = Post::findOrfail($id);
+        $post = Post::findOrFail($id);
 
         return view('posts/edit')->with(['post' => $post]);
     }
 
     public function update(PostRequest $request, $id)
     {
-        $post = Post::findOrfail($id);
+        $post = Post::findOrFail($id);
         $post->title = $request->title;
         $post->detail = $request->detail;
         $post->save();
@@ -59,7 +61,7 @@ class PostController extends Controller
 
     public function destroy($id)
     {
-        $post = Post::findOrfail($id);
+        $post = Post::findOrFail($id);
         $post->delete();
 
         return redirect()->route('index.posts');
@@ -67,20 +69,26 @@ class PostController extends Controller
 
     public function search(Request $request)
     {
-        $keyword = $request->keyword;
-        $orders = config('const.ORDERS_EN');
-        for ($i = 0; $i < count($orders); $i++) {
-            $posts[$i] = isset($keyword)
-                       ? Post::where('title', 'LIKE', '%'.$keyword.'%')->latest($orders[$i])->get()
-                       : [];
+        $keywords = array_filter(
+            explode(' ', $request->keywords),
+            function ($keyword) {return $keyword != '';}
+        );
+        $orders = config('const.ORDERS');
+        foreach (array_keys($orders) as $order_en) {
+            $query = Post::query();
+            foreach ($keywords as $keyword) {
+                $query->where('title', 'LIKE', '%'.$keyword.'%');
+            }
+            $posts[$order_en] = empty($keywords) ? []
+                : $query->latest($order_en)->get();
         }
 
-        return view('posts/search')->with(['keyword' => $keyword, 'posts' => $posts]);
+        return view('posts/search')->with(['posts' => $posts]);
     }
 
     public function like($id)
     {
-        $post = Post::findOrfail($id);
+        $post = Post::findOrFail($id);
         $post->timestamps = false;
         $post->increment('likes');
 

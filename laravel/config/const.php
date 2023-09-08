@@ -1,7 +1,11 @@
 <?php
 
 return [
-    'BOARD_NAME' => 'Hello Laravel!',
-    'ORDERS_EN' => ['likes', 'created_at', 'updated_at'],
-    'ORDERS_JA' => ['いいね数', '作成日時', '更新日時'],
+    'BOARD_NAME' => 'Laravel掲示板',
+    'ORDERS' => [
+        'likes' => 'いいね数',
+        'cmts' => 'コメント数',
+        'created_at' => '作成日時',
+        'updated_at' => '更新日時',
+    ],
 ];

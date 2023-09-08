@@ -25,7 +25,7 @@ class PostRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'detail' => 'required'
+            'detail' => 'required',
         ];
     }
 
@@ -33,7 +33,7 @@ class PostRequest extends FormRequest
     {
         return [
             'title.required' => 'タイトルは必須です',
-            'detail.required' => '詳細は必須です'
+            'detail.required' => '詳細は必須です',
         ];
     }
 }
